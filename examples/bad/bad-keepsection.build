@@ -1,0 +1,4 @@
+# keepsection overrides the defaults, and a bad address-space spec.
+[keepsection=.text] myapp
+[image=0x100-0x50] myapp2
+[phys_align=1000] myapp3

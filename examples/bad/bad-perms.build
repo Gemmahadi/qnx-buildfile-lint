@@ -1,0 +1,5 @@
+# Invalid permission specs.
+[perms=9999] foo
+[perms=abc] bar
+[perms=u=rwx,go=] baz
+[uid=abc] qux

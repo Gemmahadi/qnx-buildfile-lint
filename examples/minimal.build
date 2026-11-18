@@ -1,0 +1,14 @@
+# minimal.build -- a non-bootable IFS: just data files, no bootstrap.
+# mkifs accepts this; the linter notes that it cannot boot.
+#   ./qnx-buildfile-lint examples/minimal.build
+
+[prefix=""]
+[mount="/ifs"]
+
+[uid=0 gid=0 perms=0644] etc/config.txt = {
+# inline data file
+hello=world
+}
+
+[uid=0 gid=0 perms=0755] bin/hello
+[type=link] bin/hello-link = /ifs/bin/hello

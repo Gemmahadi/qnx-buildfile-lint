@@ -1,0 +1,6 @@
+# The bootfile must be the FIRST file in the buildfile.
+libc.so
+[virtual=x86_64,bios] .bootstrap = {
+    startup-x86
+    PATH=/proc/boot procnto-smp-instr
+}

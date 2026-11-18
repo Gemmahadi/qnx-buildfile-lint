@@ -1,0 +1,4 @@
+# Bad mtime format and short sha256.
+[mtime=2026-13-40-25:61:61] foo
+[sha256=deadbeef] bar
+[sha512=abcd] baz

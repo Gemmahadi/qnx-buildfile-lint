@@ -1,0 +1,4 @@
+# Unknown attribute + wrong boolean/value forms.
+[frobnicate=1] foo
+[+uid] bar
+[raw=1] baz

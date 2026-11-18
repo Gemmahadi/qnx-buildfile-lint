@@ -1,0 +1,5 @@
+# Unterminated attribute block and unterminated inline file.
+[uid=0
+foo
+/etc/data = {
+never closed

@@ -1,0 +1,6 @@
+# A backslash-newline inside a data inline file is literal content,
+# and content on the brace line is an error.
+/etc/data = {
+first line \
+second line
+}

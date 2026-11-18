@@ -1,0 +1,6 @@
+# A zlib-compressed IFS cannot boot.
+[virtual=x86_64,bios +compress] .bootstrap = {
+    startup-x86
+    PATH=/proc/boot procnto-smp-instr
+}
+[compress=1] libc.so

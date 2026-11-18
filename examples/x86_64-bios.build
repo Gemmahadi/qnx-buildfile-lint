@@ -1,0 +1,21 @@
+# x86_64-bios.build -- minimal bootable QNX 8.0 image for a PC (BIOS).
+# Adapted from the "Examples" section of the QNX SDP 8.0 mkifs
+# Utilities Reference. Lint it with:
+#   ./qnx-buildfile-lint examples/x86_64-bios.build
+
+[virtual=x86_64,bios] .bootstrap = {
+    startup-x86
+    PATH=/proc/boot procnto-smp-instr
+}
+
+[+script] .script = {
+    devc-con -n9 &
+    reopen /dev/con1
+    [+session] esh &
+}
+
+libc.so
+libgcc_s.so.1
+/usr/lib/ldqnx-64.so.2=ldqnx-64.so.2
+devc-con
+esh

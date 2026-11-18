@@ -1,0 +1,4 @@
+# type=link needs the target=link-target form.
+[type=link] /bin/sh
+[type=link] mylink=mydir
+mylink/targetfile=hostfile

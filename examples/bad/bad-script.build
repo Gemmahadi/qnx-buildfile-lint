@@ -1,0 +1,24 @@
+# Startup-script mistakes: shell constructs, bad priority, foreground
+# resource manager in the middle, unknown modifier, missing binary.
+[virtual=x86_64,bios] .bootstrap = {
+    startup-x86
+    PATH=/proc/boot procnto-smp-instr
+}
+
+[+script] .script = {
+    devc-con -n9 &
+    ls > /tmp/list.txt
+    [pri=999] devc-pty
+    if_up en0
+    export FOO=bar
+    [bogus=1] esh &
+    missing-driver &
+    [+session] esh &
+}
+libc.so
+libgcc_s.so.1
+/usr/lib/ldqnx-64.so.2=ldqnx-64.so.2
+devc-con
+devc-pty
+esh
+if_up

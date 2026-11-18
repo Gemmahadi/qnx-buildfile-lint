@@ -1,0 +1,7 @@
+# image= without ram= (ROM/FLASH needs both).
+[image=0x1400000]
+[virtual=x86_64,bios] .bootstrap = {
+    startup-x86
+    PATH=/proc/boot procnto-smp-instr
+}
+libc.so

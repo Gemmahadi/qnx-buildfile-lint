@@ -1,0 +1,5 @@
+# +optional cannot be enabled for bootstrap executables.
+[+optional virtual=x86_64,bios] .bootstrap = {
+    startup-x86
+    PATH=/proc/boot procnto-smp-instr
+}

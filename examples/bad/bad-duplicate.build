@@ -1,0 +1,3 @@
+# Two entries for the same target path.
+[uid=0] myapp
+[uid=1] myapp

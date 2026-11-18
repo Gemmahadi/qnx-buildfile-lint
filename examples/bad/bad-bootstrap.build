@@ -1,0 +1,5 @@
+# Bootstrap must start with startup-* and end with procnto.
+[virtual=x86_64,bios] .bootstrap = {
+    procnto-smp-instr
+    startup-x86
+}

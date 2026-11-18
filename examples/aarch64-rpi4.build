@@ -1,0 +1,44 @@
+# aarch64-rpi4.build -- bootable QNX 8.0 image for Raspberry Pi 4
+# (BCM2711), raw boot image loaded by U-Boot. Based on the QNX SDP 8.0
+# "Building a QNX SDP 8 BSP for Raspberry Pi" guide and the mkifs
+# examples. Lint it with:
+#   ./qnx-buildfile-lint examples/aarch64-rpi4.build
+
+[image=0x80000-0x8000000,16m]
+[ram=0x1000000-0x40000000]
+[virtual=aarch64le,raw] .bootstrap = {
+    startup-bcm2711-rpi4 -v
+    PATH=/proc/boot:/bin:/usr/bin:/sbin:/usr/sbin \
+    LD_LIBRARY_PATH=/proc/boot:/lib:/usr/lib:/lib/dll \
+    procnto-smp-instr -v
+}
+
+[+script] startup-script = {
+    procmgr_symlink /dev/shmem/ /tmp
+    procmgr_symlink /proc/boot/libc.so.4 /usr/lib/libc.so
+    devc-ser8250 -e -b 115200 0xfe201000,153 &
+    waitfor /dev/ser1
+    # NOTE: the mkifs docs example runs `pipe` in the foreground here,
+    # but a foreground resource manager blocks the rest of the script,
+    # so this buildfile backgrounds it (the linter flags QNX405 otherwise).
+    pipe &
+    waitfor /dev/pipe
+    [+session] esh &
+}
+
+[type=link] /dev/con1 = /dev/ser1
+
+# An inline data file: /etc/hosts for early name resolution.
+/etc/hosts = {
+127.0.0.1       localhost
+192.168.1.1     ra
+}
+
+libc.so.4
+libc.so
+libgcc_s.so.1
+/usr/lib/ldqnx-64.so.2=ldqnx-64.so.2
+libsocket.so
+devc-ser8250
+esh
+pipe

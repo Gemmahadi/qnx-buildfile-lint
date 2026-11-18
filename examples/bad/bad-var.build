@@ -1,0 +1,4 @@
+# Undefined variable.
+[search=/opt/${MYSTERY_DIR}/bin]
+[prefix=${ALSO_MISSING}/boot]
+myfile

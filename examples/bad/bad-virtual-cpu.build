@@ -1,0 +1,5 @@
+# bios is an x86_64-only bootfile; aarch64le cannot use it.
+[virtual=aarch64le,bios] .bootstrap = {
+    startup-bcm2711-rpi4
+    PATH=/proc/boot procnto-smp-instr
+}

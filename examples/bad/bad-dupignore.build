@@ -1,0 +1,4 @@
+# QNX 8.0: both entries have +dupignore, so the earlier one wins and
+# the later is ignored (a note, not an error).
+[+dupignore uid=0] myapp = /opt/a/myapp
+[+dupignore uid=1] myapp = /opt/b/myapp

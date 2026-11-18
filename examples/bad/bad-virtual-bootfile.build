@@ -1,0 +1,5 @@
+# There is no bootfile called 'magic'.
+[virtual=x86_64,magic] .bootstrap = {
+    startup-x86
+    PATH=/proc/boot procnto-smp-instr
+}
